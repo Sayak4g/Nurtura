@@ -1,38 +1,62 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body {
+  background: linear-gradient(135deg, #E6F2FF 0%, #B0D4F3 100%);
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-attachment: fixed;
 }
 
-.App-link {
-  color: #61dafb;
+#root {
+  @apply min-h-screen flex flex-col;
 }
 
-@keyframes App-logo-spin {
+/* Soft Glow Effect for Cards */
+.card-glow {
+  @apply shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out;
+}
+
+/* Subtle Hover Animations */
+.hover-lift {
+  @apply transition-transform duration-300 hover:-translate-y-1;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(20px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Soft Border Radius */
+.soft-rounded {
+  @apply rounded-2xl;
+}
+
+/* Footer Styles */
+footer {
+  @apply bg-white/10 backdrop-blur-sm text-center py-4 text-gray-700;
+}
+
+/* Copyright Text */
+.copyright {
+  @apply text-sm opacity-70;
+}
+
+/* Responsive Utilities */
+@media (max-width: 640px) {
+  .mobile-stack {
+    @apply flex flex-col space-y-4;
   }
 }
