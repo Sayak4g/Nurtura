@@ -10,6 +10,8 @@ import Medical from "./pages/Medical";
 import Tasks from "./pages/Tasks";
 import Contacts from "./pages/Contacts";
 import Footer from "./components/Layout/Footer";
+import VideoCall from "./components/videocall.jsx";
+import Chat from "./components/chat.jsx";
 
 const queryClient = new QueryClient();
 
@@ -27,7 +29,11 @@ const App = () => (
               <Route path="/tasks" element={<Tasks />} />
               <Route path="/contacts" element={<Contacts />} />
               <Route path="*" element={<NotFound />} />
+              <Route path="/videocall" element={<VideoCall />} />
+              <Route path="/chat" element={<Chat />} />
             </Routes>
+            {/* <VideoCall />
+            <Chat /> */}
           </div>
           <Footer />
         </BrowserRouter>
