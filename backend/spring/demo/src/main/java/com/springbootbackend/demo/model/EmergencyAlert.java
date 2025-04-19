@@ -32,35 +32,52 @@ public class EmergencyAlert {
 
     // Getters and Setters
 
-    public static class Location {
-        private Double lat;
-        private Double lng;
 
-        // Constructors
-        public Location() {}
-
-        public Location(Double lat, Double lng) {
-            this.lat = lat;
-            this.lng = lng;
-        }
-
-        // Getters and Setters
-        public Double getLat() {
-            return lat;
-        }
-
-        public void setLat(Double lat) {
-            this.lat = lat;
-        }
-
-        public Double getLng() {
-            return lng;
-        }
-
-        public void setLng(Double lng) {
-            this.lng = lng;
-        }
+    public String getId() {
+        return id;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
 
+    public UserModel getUserId() {
+        return userId;
+    }
+
+    public void setUserId(UserModel userId) {
+        this.userId = userId;
+    }
+
+    public Contact getContactId() {
+        return contactId;
+    }
+
+    public void setContactId(Contact contactId) {
+        this.contactId = contactId;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
 }
