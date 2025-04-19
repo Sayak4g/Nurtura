@@ -2,10 +2,12 @@ package com.springbootbackend.demo.controller;
 
 import com.springbootbackend.demo.dto.EmergencyAlertDto;
 import com.springbootbackend.demo.model.EmergencyAlert;
+import com.springbootbackend.demo.model.PushSubscription;
 import com.springbootbackend.demo.repository.EmergencyAlertRepo;
 import com.springbootbackend.demo.service.EmergencyAlertService;
 import com.springbootbackend.demo.serviceImp.SmsServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("emergencyAlert")
@@ -23,7 +25,7 @@ public class EmergencyAlertController {
         return emergencyAlertService.createEmergencyAlert(emergencyAlertDto);
     }
 
-    @PostMapping("/send/{alertId}")
+   @PostMapping("/send/{alertId}")
     public String sendAlert(@PathVariable String alertId) {
         EmergencyAlert alert = emergencyAlertRepo.findById(alertId).orElse(null);
 
@@ -38,6 +40,9 @@ public class EmergencyAlertController {
             return "Emergency alert not found!";
         }
     }
+
+
+
 
 
 }
