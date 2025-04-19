@@ -74,4 +74,10 @@ public class CloudinaryServiceImp {
         con.setProfilePic(imageUrl);
         contactRepo.save(con);
     }
+
+
+    public String uploadMedicalReport(MultipartFile file) throws IOException {
+        Map<String, Object> uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
+        return (String) uploadResult.get("url");
+    }
 }
