@@ -1,21 +1,10 @@
-package com.springbootbackend.demo.model;
+package com.springbootbackend.demo.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
-import java.util.List;
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
-@Document(collection = "users")
-public class UserModel {
-    @Id
-    private String id;
+public class UserDto {
 
     private String name;
     private int age;
@@ -36,28 +25,8 @@ public class UserModel {
     private String country;
     private String zipCode;
 
-    private String profilePic;
+    private String emergencyContactId;
 
-    @DBRef
-    private Contact emergencyContact;
-
-    @DBRef
-    private List<Contact> contacts;
-    @DBRef
-    private List<MedicalRecord> medicalRecords;
-    @DBRef
-    private List<EmergencyAlert> emergencyAlerts;
-    @DBRef
-    private List<VideoCallLog> videoCallLog;
-
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -203,51 +172,11 @@ public class UserModel {
         this.zipCode = zipCode;
     }
 
-    public String getProfilePic() {
-        return profilePic;
+    public String getEmergencyContactId() {
+        return emergencyContactId;
     }
 
-    public void setProfilePic(String profilePic) {
-        this.profilePic = profilePic;
-    }
-
-    public Contact getEmergencyContact() {
-        return emergencyContact;
-    }
-
-    public void setEmergencyContact(Contact emergencyContact) {
-        this.emergencyContact = emergencyContact;
-    }
-
-    public List<Contact> getContacts() {
-        return contacts;
-    }
-
-    public void setContacts(List<Contact> contacts) {
-        this.contacts = contacts;
-    }
-
-    public List<MedicalRecord> getMedicalRecords() {
-        return medicalRecords;
-    }
-
-    public void setMedicalRecords(List<MedicalRecord> medicalRecords) {
-        this.medicalRecords = medicalRecords;
-    }
-
-    public List<EmergencyAlert> getEmergencyAlerts() {
-        return emergencyAlerts;
-    }
-
-    public void setEmergencyAlerts(List<EmergencyAlert> emergencyAlerts) {
-        this.emergencyAlerts = emergencyAlerts;
-    }
-
-    public List<VideoCallLog> getVideoCallLog() {
-        return videoCallLog;
-    }
-
-    public void setVideoCallLog(List<VideoCallLog> videoCallLog) {
-        this.videoCallLog = videoCallLog;
+    public void setEmergencyContactId(String emergencyContactId) {
+        this.emergencyContactId = emergencyContactId;
     }
 }
