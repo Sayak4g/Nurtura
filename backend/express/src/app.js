@@ -21,10 +21,16 @@ app.use(cookieParser())
 //router import 
 
 import userRouter from "./routes/user.route.js"
+import { v4 as uuidv4 } from 'uuid';
 
 //router decleration
 
 app.use("/api/v1/users", userRouter)
+
+app.get('/api/v1/newRoomId', (req, res) => {
+    const roomId = uuidv4();
+    res.json({ roomId });
+});
 
 
 
