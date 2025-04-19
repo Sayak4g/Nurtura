@@ -1,22 +1,26 @@
 package com.springbootbackend.demo.controller;
 
+import com.springbootbackend.demo.model.PushSubscription;
+import com.springbootbackend.demo.serviceImp.PushNotificationService;
 import com.springbootbackend.demo.serviceImp.SmsServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/sms")
 public class SmsController {
     @Autowired
-    SmsServiceImp smsServiceImp;
-    @PostMapping("/send")
-    public String sendSms(
-            @RequestParam String phone,
-            @RequestParam String message) {
-        return smsServiceImp.sendSms(phone, message);
-    }
+    private PushNotificationService pushService;
 
+    @PostMapping("/send")
+    public ResponseEntity<String> sendNotification(@RequestBody PushSubscription subscription) {
+        try {
+            pushService.sendNotification(subscription, "Test notification from Spring Boot!");
+            return ResponseEntity.ok("Notification sent!");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed: " + e.getMessage());
+        }
+    }
 }
