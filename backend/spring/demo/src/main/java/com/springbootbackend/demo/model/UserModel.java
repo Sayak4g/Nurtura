@@ -1,9 +1,17 @@
 package com.springbootbackend.demo.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Date;
 import java.util.List;
-
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 @Document(collection = "users")
 public class UserModel {
     @Id
@@ -14,63 +22,32 @@ public class UserModel {
     private String email;
     private String phoneNo;
     private String gender;
+    private String height;
+    private String weight;
+    private Date dateOfBirth;
+    private String maritalStatus;
+    private String bloodGroup;
+    private String allergies;
+    private String medicalConditions;
+    private String medications;
+    private String address;
+    private String city;
+    private String state;
+    private String country;
+    private String zipCode;
 
-    private List<String> medicalRecords;
+    private String profilePic;
 
+    @DBRef
+    private Contact emergencyContact;
 
-    public String getId() {
-        return id;
-    }
+    @DBRef
+    private List<Contact> contacts;
+    @DBRef
+    private List<MedicalRecord> medicalRecords;
+    @DBRef
+    private List<EmergencyAlert> emergencyAlerts;
+    @DBRef
+    private List<VideoCallLog> videoCallLog;
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhoneNo() {
-        return phoneNo;
-    }
-
-    public void setPhoneNo(String phoneNo) {
-        this.phoneNo = phoneNo;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public List<String> getMedicalRecords() {
-        return medicalRecords;
-    }
-
-    public void setMedicalRecords(List<String> medicalRecords) {
-        this.medicalRecords = medicalRecords;
-    }
 }
